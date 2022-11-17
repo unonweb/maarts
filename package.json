@@ -1,0 +1,18 @@
+{
+  "name": "maarts_spa",
+  "version": "0.0.0",
+  "description": "website for maarts.de",
+  "main": "index.html",
+  "scripts": {
+    "build": "npx vite build -c vite.config.js",
+    "dev": "npx wds --node-resolve ./src/index.html --root-dir ./src/"
+  },
+  "author": "unonweb",
+  "license": "ISC",
+  "dependencies": {
+    "lit": "^2"
+  },
+  "devDependencies": {
+    "vite-plugin-static-copy": "^0.12.0"
+  }
+}
