@@ -1,0 +1,7 @@
+[build]
+	publish = "build/" # after build this will be the 'build' dir
+[[redirects]]
+  	from = "/*"
+	to = "/index.html"
+	status = 200
+	# This will effectively serve the index.html instead of giving a 404 no matter what URL the browser requests.

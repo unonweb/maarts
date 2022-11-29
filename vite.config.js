@@ -14,6 +14,10 @@ export default {
 		viteStaticCopy({
 			targets: [
 				{
+					src: 'netlify.toml', // relative to root
+					dest: '' // relative to outDir
+				},
+				{
 					src: 'assets', // relative to root
 					dest: '' // relative to outDir
 				},
