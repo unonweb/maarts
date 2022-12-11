@@ -1,0 +1,31 @@
+/* theme="tiles" */
+:host([theme='tiles']) ::slotted(*) {
+	background-color: var(--link-back-color);
+	border-radius: 5px;
+}
+:host([theme='tiles']) ::slotted(a) {
+    padding: 5px;
+}
+
+/* theme="maarts" */
+:host([theme='maarts']) ::slotted(a) {
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+/* theme="vaadin" */
+:host([theme='vaadin']) ::slotted(a) {
+	font-weight: bold;
+	border: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    font-size: medium;
+}
+:host([theme='vaadin']) ::slotted(a:active) {
+	transition-property: background-color;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+}

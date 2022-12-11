@@ -1,0 +1,40 @@
+nav {
+	margin-bottom: 8vh;
+}
+main {
+	width: 80%;
+	margin: auto;
+}
+/* page="/home" */
+main[page="/home"] article {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	row-gap: 20px;
+}
+main[page="/home"] .rt-content {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 6vh;
+}
+main[page="/home"] un-gallery {
+	margin-bottom: 3vh;
+}
+
+main[page="/home"] section.social-media-links {
+	display: flex;
+	flex-flow: column nowrap;
+	row-gap: 2vh;
+}
+main[page="/home"] section.social-media-links img {
+	width: 38px;
+}
+/* page="/product" */
+main[page="/product"] {
+	display: flex;
+	flex-flow: row nowrap;
+	column-gap: 10vw;
+}

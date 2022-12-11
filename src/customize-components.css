@@ -30,8 +30,6 @@
 	--link-text-color: #070f3a;
 	--link-text-color-hover: darkblue;
 	--link-text-color-active: black;
-	--link-text-decoration: none;
-	--link-text-decoration-active: thin solid darkblue;
 	--link-text-transform: uppercase;
 	/* button */
 	--button-back-color: transparent;
@@ -48,49 +46,37 @@
 	--button-transition-active: background-color 0.1s ease-out;
 }
 
-:root [theme="tiles"] {
-	--button-outline: 1px solid black;
-	--link-back-color: #bf676733;
-	--link-outline: 1px solid black;
-	--link-outline-hover: 2px solid black;
-	--link-outline-active: 3px solid black;
-}
-
-:root [theme="vaadin"] {
-	--button-back-color: #006af5;
-	--button-back-color-hover: #0064e7;
-	--button-back-color-active: #006af5b3;
-	--button-outline-focus: 2px solid #006af5ab;
-	--button-text-color: white;
-	--button-transition-active: background-color 0.1s ease-out;
-}
-
-:root [theme="manu"] {
-	--color-back: white;
-	--color-back-hover: lightblue;
-	--color-back-active: lightgrey;
-	--color-button: black;
-}
-
 :root [theme="maarts"] {
 	color: rgb(51, 51, 51);
 	font-family: RobotoCondensed-Light; /* ok */
-  --font-family-link: Roboto-Regular;
+	--back-color-secondary: #122828;
 	
+	/* fonts */
+  --font-family-link: Roboto-Regular;
 	--font-color-light: rgb(34, 34, 34);
 	--font-color-medium: rgb(51, 51, 51);
 	--font-color-strong: rgb(77, 77, 77);
-
-	--back-color-secondary: #122828;
-
+  /* links */
 	--link-back-color-hover: rgb(247, 247, 247);
 	--link-text-color: rgb(180, 136, 75);
 	--link-text-color-hover: hsl(35, 41%, 50%);
-
+	--link-text-decoration: none;
+  --link-text-decoration-hover: underline solid var(--link-text-color);
+	--link-text-decoration-active: thin solid darkblue;
+	/* buttons */
 	--button-back-color: rgb(247, 247, 247);
 	--button-back-color-hover: hsl(35, 41%, 50%);
 	--button-text-color: black;
 }
 :root [theme="maarts"] * {
   font-family: RobotoCondensed-Light; /* ok */
+}
+a {
+	color: var(--link-text-color);
+	text-transform: uppercase;
+	text-decoration: var(--link-text-decoration);
+}
+a:hover {
+  text-decoration: var(--link-text-decoration-hover);
+
 }

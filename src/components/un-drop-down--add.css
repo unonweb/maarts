@@ -1,0 +1,14 @@
+:host([theme="tiles"]) .drop-content.active {
+	border: thin solid var(--color-border);
+	box-shadow: 1px 1px 10px #948d8d;
+}
+
+/* theme='vaadin' */
+
+:host([theme='vaadin']) button {
+	font-weight: bold;
+	border: none;
+}
+:host([theme='vaadin']) button:focus {
+	outline-offset: 1px;
+}

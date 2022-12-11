@@ -1,0 +1,52 @@
+:host {
+    display: flex;
+    justify-content: center;
+    /*! margin-right: 5px; */
+    align-items: center;
+    border-bottom: thin solid #b3b3b3;
+    padding-bottom: 3px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+.left {
+    font-size: large;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    /*! border-left: thin solid black; */
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+/* slotted */
+
+::slotted(a) {
+    font-family: var(--link-font-family);
+    font-size: large;
+	background-color: var(--link-back-color);
+	outline: var(--link-outline);
+	color: var(--link-text-color);
+    text-decoration-line: var(--link-text-decoration);
+	white-space: nowrap;
+}
+::slotted(a:hover) {
+	background-color: var(--link-back-color-hover);
+	outline: var(--link-outline-hover);
+	color: var(--link-text-color-hover);
+}
+::slotted(a:active) {
+	background-color: var(--link-back-color-active);
+    text-decoration: var(--link-text-decoration-active);
+    outline: var(--link-outline-active);
+}
+
+@media (min-width: 680px) {
+    un-menu-bar::part(right) {
+        flex-direction: row;
+        border-left: none;   
+    }
+}

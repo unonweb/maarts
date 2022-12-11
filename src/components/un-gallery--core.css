@@ -1,0 +1,238 @@
+:host {
+	/* size must be set for .showcase and .thumbnails seperately in variables */
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	/*! margin-bottom: 30px; */
+	--width-showcase: 100%;
+	--height-showcase: 35vw;
+	--size-thumbnails: 8vw;
+	--size-arrows: 8vw;
+	--pos-arrows: 83%;
+	--size-bullets: 0.6vw;
+	--border-bullets: 1px solid white;
+	--color-arrows-primary: #fde6e6;
+	--color-arrows-secondary: white;
+	--color-bullets-secondary: #682f2f;
+	--gap-thumbnails: 10px;
+	--gap-showcase: 10px;
+}
+
+:host([page='/shop']) {
+	--width-showcase: 100%;
+	--height-showcase: clamp(150px, 20vw, 300px);
+	pointer-events: none; /* need this to trigger anchor action (which is wrapping my gallery) */
+	/*! margin-bottom: 20px; */
+	/*! width: 100%; */
+	/*! height: 100%; */
+}
+:host([page='/home']) {
+	--width-showcase: 100vw;
+	--height-showcase: 35vw;
+}
+:host([page='/product']) {
+	--width-showcase: 23vw;
+	--height-showcase: 35vh;
+	--size-thumbnails: 5vw;
+	--size-arrows: 3vw;
+}
+
+.showcase {
+	position: relative;
+	width: var(--width-showcase);
+	height: var(--height-showcase);
+}
+
+/* ARROWS */
+
+.arrows {
+	position: absolute;
+	top: 50%; /* relative to the parent */
+	transform: translateY(-50%); /* relative to the element itself */
+	-webkit-appearance: none;
+	background: transparent;
+	border: 0;
+	outline: 0;
+	
+	cursor: pointer;
+	transition: transform .2s; /* Animation */
+	z-index: 3;
+	width: fit-content;
+	padding: 0;
+	width: var(--size-arrows);
+	height: var(--size-arrows);
+}
+.arrows:hover {
+	transform: translateY(-50%) scale(1.5);
+	stroke-width: 2;
+}
+.arrows:hover polyline,
+.arrows:focus polyline {
+	stroke-width: 2;
+}
+.arrows:active polyline {
+	stroke-width: 4;
+	transition: all 100ms ease-in-out;
+	stroke: var(--color-arrows-secondary);
+}
+.left {
+	right: calc(var(--pos-arrows) - 5px);
+}
+.right {
+	left: var(--pos-arrows);
+}
+svg {
+	width: 100%;
+	height: 100%;
+}
+polyline {
+	transition: all 250ms ease-in-out;
+	fill: none;
+	stroke: var(--color-arrows-primary);
+	stroke-width: 1;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* BULLETS */
+
+.bullets {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	width: 50%;
+	position: absolute;
+	bottom: 2%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	column-gap: 2vw;
+}
+.bullet {
+	border-radius: 100%;
+	border: var(--border-bullets);
+	height: var(--size-bullets);
+	width: var(--size-bullets);
+	cursor: pointer;
+	/*! outline: 3px solid #5f5e5e; */
+	/*! outline-offset: -5px; */
+	transition: border-color 0.3s;
+	transition: background-color 0.3s;
+}
+.bullet:hover {
+  border-color: var(--color-bullets-secondary);
+}
+
+/* THUMBNAILS */
+
+.thumbnails {
+	display: flex;
+	justify-content: center;
+}
+
+.thumbnail {
+	width: var(--size-thumbnails);
+	height: var(--size-thumbnails);
+	object-fit: cover;
+	opacity: 0.4;
+	cursor: pointer;
+	transition-property: transform;
+	transition-timing-function: ease;
+	transition-duration: 0.25s;
+}
+
+/* show / hide */
+
+::slotted(img) {
+	object-fit: cover;
+	transform: scale(0%);
+	position: absolute;
+	/* before this was un-gallery img */
+	opacity: 0; 
+	width: 100%;
+	height: 100%;
+}
+::slotted(img.show) {
+	transform: scale(1) !important;
+	position: static !important;
+	opacity: 1 !important;
+	object-fit: cover;
+}
+.bullet-current {
+	background-color: #682f2f;
+}
+.thumbnail-current {
+	opacity: 1 !important;
+}
+.thumbnail-hide {
+	position: absolute;
+	opacity: 0 !important;
+	/* width: 0px !important; */
+	transform: translateX(100%);
+}
+
+/* arrows=false */
+
+:host([arrows='false'])
+.arrows {
+	display: none !important;
+}
+
+/* orientation=horizontal */
+
+:host([orientation='horizontal']) {
+	flex-direction: column;
+	align-items: center;
+	row-gap: var(--gap-showcase);
+}
+:host([orientation='horizontal']) .thumbnails {
+	flex-flow: row nowrap;
+	column-gap: var(--gap-thumbnails);
+}
+
+/* orientation=vertical */
+
+:host([orientation='vertical']) {
+	flex-direction: row-reverse !important;
+	column-gap: 0vw;
+	align-items: flex-start;
+}
+:host([orientation='vertical']) .thumbnail-next-left {
+	transform: translateY(-100%); /* for vertical orientation make it slide in from above */
+}
+:host([orientation='vertical']) .thumbnail-next-right {
+	transform: translateY(100%); /* for vertical orientation make it slide in from below */
+}
+:host([orientation='vertical']) .thumbnails {
+	flex-flow: column nowrap !important;
+	row-gap: 1vh;
+	margin-right: 20px;
+}
+
+/* transition effect */
+
+:host([transfx='flash']) ::slotted(img) {
+	transition-property: opacity;
+	transition-duration: 0.5s;
+	opacity: 0;
+}
+:host([transfx='flash']) ::slotted(img.show) {
+	opacity: 1 !important;
+}
+:host([transfx='grey']) ::slotted(img) {
+	transition-property: filter;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
+	filter: grayscale(100%);
+}
+:host([transfx='grey']) ::slotted(img.show) {
+	filter: grayscale(0%) !important;
+}
+:host([transfx='blend']) ::slotted(img) {
+	transition-property: filter;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	filter: brightness(0%);
+}
+:host([transfx='blend']) ::slotted(img.show) {
+	filter: brightness(100%) !important;
+}

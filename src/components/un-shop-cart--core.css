@@ -1,0 +1,142 @@
+:host {
+	box-sizing: border-box;
+	display: block;
+	--color-light: #888; 
+	--color-strong: #222;
+	--color-url: #B4884B;
+	--color-border: #EEE;
+}
+
+.cart-table {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 10px 10px;
+}
+.row {
+	width: 100%;
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	border-bottom: 1px solid var(--color-border);
+}
+/* table head cells */
+.th {
+	text-transform: uppercase;
+	color: var(--color-strong);
+	font-size: small;
+}
+/* table body cells */
+.tb {
+	color: var(--color-light);
+}
+/* table cells */
+.td {
+	box-sizing: border-box;
+	padding: 0.8em 1.2em;
+	overflow: hidden;
+}
+
+.col-one {
+  width: 5%;
+}
+.col-two {
+  width: 10%;
+  min-width: 100px;
+}
+.col-three {
+  width: clamp(100px, 50%, 400px);
+}
+.col-four {
+  width: 15%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.col-five {
+  width: auto;
+}
+.col-two img {
+	object-fit: contain;
+}
+/* col-three */
+/* url */
+.col-three .url {
+	text-decoration-line: none;
+	color: var(--color-url);
+	font-size: larger;
+	display: block;
+	margin-bottom: min(1vh, 15px); /*  will be at most 15px, 
+	but will be smaller if the viewport is very small */
+}
+.col-three .url:hover {
+	text-decoration: underline;
+}
+/* variation */
+.col-three .variation-key {
+  color: var(--color-light);
+	font-size: x-small;
+	text-transform: uppercase;
+}
+.col-three .variation-value {
+	text-transform: uppercase;
+	color: var(--color-strong);
+	font-size: x-small;
+}
+/* col-four */
+/* input quantity */
+.col-four input {
+	display: block;
+	float: left;
+	padding: 10px;
+	text-align: center;
+	border: 0;
+	background-color: #eee;
+	font-size: small;
+	height: 45px;
+	box-sizing: border-box;
+}
+.col-four .plusminus {
+	-webkit-appearance: button;
+  cursor: pointer;
+}
+.col-four .counter {
+	width: 50%;
+	-moz-appearance: textfield;
+	margin-right: 0.1rem;
+	margin-left: 0.1rem;
+	max-width: 50px;
+}
+/* col-five */
+/* subtotals */
+.col-five .price {
+	font-size: large;
+}
+
+/* cart-totals */
+.cart-totals {
+	margin-top: 50px;
+	float: right;
+	/*! text-align: left; */
+	min-width: 300px;
+	max-width: 300px;
+}
+.cart-totals div {
+	color: var(--color-light);
+	padding: 7px 0;
+	border-bottom: 1px solid var(--color-border);
+}
+.cart-totals .value {
+	float: right;
+}
+
+@media (max-width: 920px) {
+	.col-two {
+		display: none;
+	}
+	.col-four {
+		flex-flow: column nowrap;
+		justify-content: center;
+		align-items: center;
+		row-gap: 5px;
+		min-width: 60px;
+	}
+}

@@ -1,0 +1,79 @@
+button {
+	/* default appearance */
+	color: var(--button-text-color);
+	background-color: var(--button-back-color);
+	outline: var(--button-outline);
+	border: var(--button-border);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-radius: 5px;
+  font-family: var(--button-font-family);
+	font-size: large;
+}
+button:hover {
+	color: var(--button-text-color-hover);
+	background-color: var(--button-back-color-hover);
+}
+button:active {
+	background-color: var(--button-back-color-active);
+	transition: var(--button-transition-active);
+}
+button:focus {
+	outline: var(--button-outline-focus);
+}
+::slotted(a) {
+	/* default appearance */
+	color: var(--link-text-color);
+	font-family: var(--link-font-family);
+	text-transform: var(--link-text-transform);
+	text-decoration-line: var(--link-text-decoration);
+	padding: 5px;
+	border-radius: 5px;
+}
+::slotted(a:hover) {
+	color: var(--link-text-color-hover);
+	background-color: var(--link-back-color-hover);
+	outline: var(--link-outline-hover);
+	cursor: pointer;
+}
+::slotted(a:active) {
+	background-color: link-back-color-active;
+}
+::slotted(hr) {
+	border-top: thin solid var(--button-back-color);
+	/*! margin: 0; */
+	width: 100%;
+}
+
+/* show/hide */
+
+.drop-content {
+	display: none;
+}
+.drop-content.active {
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	align-items: flex-start;
+	width: fit-content;
+	/* default appearance */
+	background-color: var(--back-color-secondary);
+	padding: 15px 15px;
+	border-radius: 5px;
+	margin-top: 5px;
+	border: thin solid var(--link-text-color);
+}
+
+/* overlay */
+
+:host([overlay]) {
+	position: relative;
+}
+:host([overlay])
+.drop-content {
+	position: absolute;
+	z-index: 3;
+}

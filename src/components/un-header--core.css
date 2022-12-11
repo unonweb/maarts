@@ -1,0 +1,54 @@
+:host {
+	display: block;
+	height: 60vh;
+	/*! overflow: hidden; */
+	position: relative;
+	width: 100%;
+	margin: auto;
+}
+::slotted(img) {
+	opacity: 0; 
+	margin: auto;
+	width: 100%;
+	object-fit: contain;
+	height: 100%;
+	object-position: top;
+	transform: scale(0%);
+	position: absolute;
+}
+::slotted(img.show) {
+	transform: scale(1) !important;
+	opacity: 1 !important;
+}
+:host([scroll='true']) {
+	overflow: auto;
+}
+
+/* TRANSFX */
+
+:host([transfx='flash']) ::slotted(img) {
+	transition-property: opacity;
+	transition-duration: 0.5s;
+	opacity: 0;
+}
+:host([transfx='flash']) ::slotted(img.show) {
+	opacity: 1 !important;
+}
+:host([transfx='grey']) ::slotted(img) {
+	transition-property: filter;
+	transition-duration: 1s;
+	transition-timing-function: ease-in-out;
+	filter: grayscale(100%);
+}
+:host([transfx='grey']) ::slotted(img.show) {
+	filter: grayscale(0%) !important;
+}
+:host([transfx='blend']) ::slotted(img) {
+	transition-property: filter;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	filter: brightness(0%);
+}
+:host([transfx='blend']) ::slotted(img.show) {
+	filter: brightness(100%) !important;
+}
